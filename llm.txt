@@ -1,0 +1,54 @@
+# Nudge App — LLM Context File
+
+## Project Overview
+Nudge is a habit and goal tracking web app designed to feel like an encouraging friend.
+It helps users stay on track with gentle reminders, celebrate small wins, and build
+consistent habits through positive reinforcement.
+
+## Purpose
+- Help users set and track daily/weekly goals
+- Send smart nudge reminders at the right time
+- Celebrate small wins with micro-celebrations (confetti, streaks, badges)
+- Keep users motivated without feeling like a productivity tool
+
+## Tech Stack
+- HTML, CSS, JavaScript
+- Hosted on GitHub Pages (nudge-up.github.io)
+- No backend — static site
+
+## Key Features
+- Goal setting and tracking
+- Reminder nudges
+- Small celebrations on completion
+- Streak tracking
+- Minimal, warm UI
+
+## Coding Guidelines
+- Use vanilla HTML, CSS, JS (no frameworks)
+- ES6+ syntax
+- Mobile first, responsive design
+- Warm, friendly UI tone — not corporate
+- Add comments for every function
+- Keep files modular and clean
+
+## File Structure
+- index.html        — main entry point
+- style.css         — global styles
+- app.js            — core logic
+- AGENTS.md         — project context for AI assistants
+
+## Design Tone
+- Warm, friendly, encouraging
+- Avoid cold productivity tool aesthetics
+- Celebrate the user — confetti, emoji, positive messages
+- Simple and clean — no clutter
+
+## Target Users
+- Students, professionals, anyone with goals
+- People who want gentle accountability
+- Users who struggle with harsh productivity apps
+
+## Out of Scope
+- No complex backend
+- No user authentication (for now)
+- No paid features (for now)

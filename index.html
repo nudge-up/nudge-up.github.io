@@ -3,81 +3,148 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>NudgeUp ✨ — Your Girly Goal Era Starts Now</title>
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══════════════════════════════════════════
+       PRIMARY SEO TAGS
+  ═══════════════════════════════════════════ -->
+  <title>NudgeUp — Goal Tracker, Habit Streaks & Wellness App for Women</title>
+  <meta name="description"
+        content="NudgeUp is a free goal tracking app with habit streaks, wellness logs, XP rewards, and small celebrations. Built for women who want to level up — no subscriptions, no ads.">
+  <meta name="keywords"
+        content="goal tracker app, habit tracker for women, streak app, wellness log, XP rewards app, nudge app, habit building, self improvement app, free goal app">
+  <meta name="author" content="NudgeUp">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nudge-up.github.io/">
+
+  <!-- ═══════════════════════════════════════════
+       OPEN GRAPH (Facebook, LinkedIn, WhatsApp)
+  ═══════════════════════════════════════════ -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nudge-up.github.io/">
+  <meta property="og:title" content="NudgeUp ✨ — Your Girly Goal Era Starts Now">
+  <meta property="og:description"
+        content="Set goals. Build streaks. Log wellness. Earn XP. Celebrate happiness. The free habit tracker built for that girl era.">
+  <meta property="og:image" content="https://nudge-up.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="NudgeUp app — goal tracker and habit streaks for women">
+  <meta property="og:site_name" content="NudgeUp">
+  <meta property="og:locale" content="en_US">
+
+  <!-- ═══════════════════════════════════════════
+       TWITTER / X CARD
+  ═══════════════════════════════════════════ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://nudge-up.github.io/">
+  <meta name="twitter:title" content="NudgeUp ✨ — Your Girly Goal Era Starts Now">
+  <meta name="twitter:description"
+        content="Set goals. Build streaks. Log wellness. Earn XP. Celebrate happiness. Free forever. No ads.">
+  <meta name="twitter:image" content="https://nudge-up.github.io/og-image.png">
+  <meta name="twitter:image:alt" content="NudgeUp — goal tracker and habit streaks for women">
+
+  <!-- ═══════════════════════════════════════════
+       FAVICON
+  ═══════════════════════════════════════════ -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#FF3D7F">
+
+  <!-- ═══════════════════════════════════════════
+       STRUCTURED DATA (JSON-LD)
+  ═══════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "NudgeUp",
+    "url": "https://nudge-up.github.io/",
+    "description": "NudgeUp is a free goal tracking and habit streak app with wellness logs, XP rewards, and small celebrations for women.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Goal tracking",
+      "Habit streaks",
+      "Wellness logs",
+      "XP reward system",
+      "Family leaderboard",
+      "Custom rewards"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "NudgeUp",
+      "url": "https://nudge-up.github.io/"
+    }
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       PERFORMANCE
+  ═══════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;700&display=swap"
         rel="stylesheet">
-  <link rel="stylesheet"
-        href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
   <!-- Custom cursor -->
-  <div class="cursor"
-       id="cursor"></div>
-  <div class="cursor-ring"
-       id="cursorRing"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
   <!-- XP counter -->
-  <div class="xp-counter">⚡ <span id="totalXP">0</span> XP earned</div>
+  <div class="xp-counter" aria-live="polite">⚡ <span id="totalXP">0</span> XP earned</div>
 
   <!-- Background blobs -->
-  <div class="blob-wrap">
+  <div class="blob-wrap" aria-hidden="true">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
   </div>
 
   <!-- Floating stickers -->
-  <div class="sticker"
-       style="top:18%;left:5%;--rot:-12deg;animation-duration:5s;">🌸</div>
-  <div class="sticker"
-       style="top:32%;right:6%;--rot:8deg;animation-duration:7s;">⭐</div>
-  <div class="sticker"
-       style="top:65%;left:4%;--rot:15deg;animation-duration:6s;">💫</div>
-  <div class="sticker"
-       style="top:75%;right:5%;--rot:-8deg;animation-duration:4.5s;">🎀</div>
-  <div class="sticker"
-       style="top:12%;right:12%;--rot:20deg;animation-duration:8s;">🦋</div>
+  <div aria-hidden="true">
+    <div class="sticker" style="top:18%;left:5%;--rot:-12deg;animation-duration:5s;">🌸</div>
+    <div class="sticker" style="top:32%;right:6%;--rot:8deg;animation-duration:7s;">⭐</div>
+    <div class="sticker" style="top:65%;left:4%;--rot:15deg;animation-duration:6s;">💫</div>
+    <div class="sticker" style="top:75%;right:5%;--rot:-8deg;animation-duration:4.5s;">🎀</div>
+    <div class="sticker" style="top:12%;right:12%;--rot:20deg;animation-duration:8s;">🦋</div>
+  </div>
 
   <!-- Confetti modal -->
-  <div class="confetti-overlay"
-       id="confettiOverlay">
+  <div class="confetti-overlay" id="confettiOverlay" role="dialog" aria-modal="true" aria-labelledby="confettiTitle">
     <div class="confetti-box">
-      <div class="confetti-emoji">🎉</div>
-      <div class="confetti-title"
-           id="confettiTitle">Goal Crushed!</div>
-      <div class="confetti-sub"
-           id="confettiSub">You're absolutely that girl ✨</div>
-      <div class="confetti-xp"
-           id="confettiXP">+50 XP earned!</div>
-      <button class="confetti-close"
-              onclick="closeConfetti()">Keep going! 💪</button>
+      <div class="confetti-emoji" aria-hidden="true">🎉</div>
+      <div class="confetti-title" id="confettiTitle">Goal Crushed!</div>
+      <div class="confetti-sub" id="confettiSub">You're absolutely that girl ✨</div>
+      <div class="confetti-xp" id="confettiXP">+50 XP earned!</div>
+      <button class="confetti-close" onclick="closeConfetti()">Keep going! 💪</button>
     </div>
   </div>
 
   <!-- NAV -->
-  <nav>
-    <a href="#"
-       class="nav-logo">NudgeUp <sup>✨</sup></a>
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="NudgeUp home">NudgeUp <sup>✨</sup></a>
     <div class="nav-links">
       <a href="#goals">Goals</a>
       <a href="#streaks">Streaks</a>
       <a href="#wellness">Wellness</a>
       <a href="#rewards">Rewards</a>
-      <a href="https://nudge-up.github.io/web/"
-         class="nav-btn">Start for Free 🌸</a>
+      <a href="https://nudge-up.github.io/web/" class="nav-btn">Start for Free 🌸</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-eyebrow">✨ your glow-up starts here</div>
-    <h1>
+    <h1 id="hero-heading">
       The goal app for<br>
       <span class="underline-word"><em>that girl</em></span> era
     </h1>
@@ -85,7 +152,7 @@
       Set goals. Build streaks. Log wellness. Earn XP. Celebrate happiness.
       Repeat. It's giving main character energy — but make it <em>productive</em>.
     </p>
-    <div class="hero-tags">
+    <div class="hero-tags" aria-label="App features">
       <span class="tag">🎯 Goals & Nudges</span>
       <span class="tag">🔥 Streaks</span>
       <span class="tag">💧 Wellness Logs</span>
@@ -94,34 +161,23 @@
       <span class="tag">👨‍👩‍👧 Family Mode</span>
     </div>
     <div class="hero-cta">
-      <a href="https://nudge-up.github.io/web/"
-         class="btn-main">Try it now ✨</a>
-      <a href="#"
-         class="btn-main"
+      <a href="https://nudge-up.github.io/web/" class="btn-main">Try it now ✨</a>
+      <a href="#" class="btn-main" aria-label="Download NudgeUp on the App Store"
          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,10,18,0.35)'"
          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,10,18,0.25)'">
-        <svg width="20"
-             height="20"
-             viewBox="0 0 24 24"
-             fill="white">
-          <path
-                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
         </svg>
         <div style="text-align:left;line-height:1.2;">
           <div style="font-size:0.6rem;opacity:0.7;letter-spacing:0.04em;">Download on the</div>
           <div style="font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.92rem;">App Store</div>
         </div>
       </a>
-      <a href="#"
-         class="btn-main"
+      <a href="#" class="btn-main" aria-label="Get NudgeUp on Google Play"
          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,10,18,0.35)'"
          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,10,18,0.25)'">
-        <svg width="20"
-             height="20"
-             viewBox="0 0 24 24"
-             fill="white">
-          <path
-                d="M3.18 23.76c.38.21.8.24 1.2.09l12.12-6.99-2.53-2.53-10.79 9.43zm-1.8-20.4C1.15 3.79 1 4.24 1 4.75v14.5c0 .51.15.96.38 1.39l.07.07 8.12-8.12v-.2L1.38 3.3zm17.11 7.34l-2.39-1.38-2.82 2.82 2.82 2.82 2.4-1.38c.69-.4.69-1.48-.01-1.88zM4.38.22L16.5 7.21 13.97 9.74 3.18.31C3.58.15 4.0.03 4.38.22z" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M3.18 23.76c.38.21.8.24 1.2.09l12.12-6.99-2.53-2.53-10.79 9.43zm-1.8-20.4C1.15 3.79 1 4.24 1 4.75v14.5c0 .51.15.96.38 1.39l.07.07 8.12-8.12v-.2L1.38 3.3zm17.11 7.34l-2.39-1.38-2.82 2.82 2.82 2.82 2.4-1.38c.69-.4.69-1.48-.01-1.88zM4.38.22L16.5 7.21 13.97 9.74 3.18.31C3.58.15 4.0.03 4.38.22z" />
         </svg>
         <div style="text-align:left;line-height:1.2;">
           <div style="font-size:0.6rem;opacity:0.7;letter-spacing:0.04em;">Get it on</div>
@@ -132,101 +188,65 @@
   </section>
 
   <!-- MARQUEE -->
-  <div class="marquee-wrap"
-       style="position:relative;z-index:1;">
-    <div class="marquee-track"
-         id="marqueeTrack"></div>
+  <div class="marquee-wrap" style="position:relative;z-index:1;" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack"></div>
   </div>
 
   <!-- GOALS DEMO -->
-  <section class="demo-section"
-           id="goals">
+  <section class="demo-section" id="goals" aria-labelledby="goals-heading">
     <div class="reveal">
       <div class="section-label">✍️ goals</div>
-      <h2 class="section-title">Add goals,<br>slay them all.</h2>
+      <h2 class="section-title" id="goals-heading">Add goals,<br>slay them all.</h2>
       <p class="section-sub">Create personal goals with XP rewards. Check them off and celebrate your happiness 🥳</p>
     </div>
 
     <div class="demo-container">
-      <!-- Form -->
       <div class="demo-card reveal">
         <h3>✨ New Goal</h3>
-
         <div class="form-group">
-          <label class="form-label">Goal name</label>
-          <input class="form-input"
-                 id="goalInput"
-                 type="text"
-                 placeholder="e.g. Drink 8 glasses of water">
+          <label class="form-label" for="goalInput">Goal name</label>
+          <input class="form-input" id="goalInput" type="text" placeholder="e.g. Drink 8 glasses of water">
         </div>
-
         <div class="form-group">
           <label class="form-label">Pick a vibe 🎨</label>
-          <div class="emoji-pick">
-            <button class="emoji-btn active"
-                    data-emoji="💪">💪</button>
-            <button class="emoji-btn"
-                    data-emoji="💧">💧</button>
-            <button class="emoji-btn"
-                    data-emoji="📚">📚</button>
-            <button class="emoji-btn"
-                    data-emoji="🏃">🏃</button>
-            <button class="emoji-btn"
-                    data-emoji="🌙">🌙</button>
-            <button class="emoji-btn"
-                    data-emoji="🌸">🌸</button>
-            <button class="emoji-btn"
-                    data-emoji="🎯">🎯</button>
-            <button class="emoji-btn"
-                    data-emoji="🧘">🧘</button>
+          <div class="emoji-pick" role="group" aria-label="Choose goal emoji">
+            <button class="emoji-btn active" data-emoji="💪" aria-label="Strength">💪</button>
+            <button class="emoji-btn" data-emoji="💧" aria-label="Water">💧</button>
+            <button class="emoji-btn" data-emoji="📚" aria-label="Study">📚</button>
+            <button class="emoji-btn" data-emoji="🏃" aria-label="Running">🏃</button>
+            <button class="emoji-btn" data-emoji="🌙" aria-label="Sleep">🌙</button>
+            <button class="emoji-btn" data-emoji="🌸" aria-label="Wellness">🌸</button>
+            <button class="emoji-btn" data-emoji="🎯" aria-label="Focus">🎯</button>
+            <button class="emoji-btn" data-emoji="🧘" aria-label="Meditation">🧘</button>
           </div>
         </div>
-
         <div class="form-group">
           <label class="form-label">Category</label>
-          <div class="category-chips">
-            <button class="cat-btn active"
-                    data-cat="Health">💊 Health</button>
-            <button class="cat-btn"
-                    data-cat="Fitness">🏃 Fitness</button>
-            <button class="cat-btn"
-                    data-cat="Mind">🧠 Mind</button>
-            <button class="cat-btn"
-                    data-cat="Finance">💸 Finance</button>
-            <button class="cat-btn"
-                    data-cat="Social">💕 Social</button>
+          <div class="category-chips" role="group" aria-label="Choose goal category">
+            <button class="cat-btn active" data-cat="Health">💊 Health</button>
+            <button class="cat-btn" data-cat="Fitness">🏃 Fitness</button>
+            <button class="cat-btn" data-cat="Mind">🧠 Mind</button>
+            <button class="cat-btn" data-cat="Finance">💸 Finance</button>
+            <button class="cat-btn" data-cat="Social">💕 Social</button>
           </div>
         </div>
-
         <div class="form-group">
-          <label class="form-label">XP reward 🌟</label>
+          <label class="form-label" for="xpSlider">XP reward 🌟</label>
           <div class="xp-range">
-            <input type="range"
-                   min="10"
-                   max="200"
-                   value="50"
-                   step="10"
-                   id="xpSlider">
-            <div class="xp-val"
-                 id="xpDisplay">50 XP</div>
+            <input type="range" min="10" max="200" value="50" step="10" id="xpSlider" aria-label="XP reward amount">
+            <div class="xp-val" id="xpDisplay">50 XP</div>
           </div>
         </div>
-
-        <button class="add-btn"
-                onclick="addGoal()">
-          <span>✨</span> Add Goal
+        <button class="add-btn" onclick="addGoal()">
+          <span aria-hidden="true">✨</span> Add Goal
         </button>
       </div>
 
-      <!-- Goals list -->
-      <div class="demo-card reveal"
-           style="min-height:320px;">
-        <h3>🎯 My Goals <span style="font-family:'Caveat',cursive;font-size:0.85rem;color:var(--muted);font-weight:400;"
-                id="goalCount">(0 goals)</span></h3>
-        <div class="goals-list"
-             id="goalsList">
+      <div class="demo-card reveal" style="min-height:320px;">
+        <h3>🎯 My Goals <span style="font-family:'Caveat',cursive;font-size:0.85rem;color:var(--muted);font-weight:400;" id="goalCount">(0 goals)</span></h3>
+        <div class="goals-list" id="goalsList" aria-live="polite" aria-label="Your goals list">
           <div class="empty-state">
-            <div class="empty-emoji">🌸</div>
+            <div class="empty-emoji" aria-hidden="true">🌸</div>
             <div>No goals yet, babe.<br>Add your first one! ✨</div>
           </div>
         </div>
@@ -235,237 +255,176 @@
   </section>
 
   <!-- STREAKS -->
-  <section class="streaks-section"
-           id="streaks">
-    <div style="max-width:1100px;margin:0 auto;"
-         class="reveal">
+  <section class="streaks-section" id="streaks" aria-labelledby="streaks-heading">
+    <div style="max-width:1100px;margin:0 auto;" class="reveal">
       <div class="section-label">🔥 streaks</div>
-      <h2 class="section-title">Consistency is<br>the new cool.</h2>
+      <h2 class="section-title" id="streaks-heading">Consistency is<br>the new cool.</h2>
       <p class="section-sub">Track daily streaks, earn badges, and never break the chain.</p>
     </div>
 
     <div class="streak-demo">
       <div class="streak-card reveal">
         <div class="streak-hero">
-          <div class="streak-flame">🔥</div>
+          <div class="streak-flame" aria-hidden="true">🔥</div>
           <div>
-            <div class="streak-num"
-                 id="streakNum">14</div>
+            <div class="streak-num" id="streakNum">14</div>
             <div class="streak-label">day streak · keep it up bestie!</div>
           </div>
         </div>
-
-        <div class="week-dots"
-             id="weekDots"></div>
-
+        <div class="week-dots" id="weekDots" aria-label="Weekly streak progress"></div>
         <div class="progress-label">
           <span>Level 8</span>
           <span>62% to Level 9</span>
         </div>
-        <div class="progress-bar">
-          <div class="progress-fill"
-               style="width:62%"></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" aria-label="Level progress">
+          <div class="progress-fill" style="width:62%"></div>
         </div>
-
-        <div style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <div
-               style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:0.5rem 0.8rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;">
-            🏅 Early Bird</div>
-          <div
-               style="background:linear-gradient(135deg,rgba(255,61,127,0.1),rgba(255,110,180,0.1));border:1.5px solid rgba(255,110,180,0.3);border-radius:12px;padding:0.5rem 0.8rem;font-size:0.78rem;font-weight:600;color:var(--rose);display:flex;align-items:center;gap:0.4rem;">
-            🔥 Streak Master</div>
-          <div
-               style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:0.5rem 0.8rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;">
-            🌙 Night Owl</div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;" aria-label="Earned badges">
+          <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:0.5rem 0.8rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;">🏅 Early Bird</div>
+          <div style="background:linear-gradient(135deg,rgba(255,61,127,0.1),rgba(255,110,180,0.1));border:1.5px solid rgba(255,110,180,0.3);border-radius:12px;padding:0.5rem 0.8rem;font-size:0.78rem;font-weight:600;color:var(--rose);display:flex;align-items:center;gap:0.4rem;">🔥 Streak Master</div>
+          <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:0.5rem 0.8rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;">🌙 Night Owl</div>
         </div>
       </div>
 
       <div class="streak-card reveal">
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.2rem;">👨‍👩‍👧 Family
-          Leaderboard</h3>
-        <div id="leaderboard"
-             style="display:flex;flex-direction:column;gap:0.7rem;"></div>
-
-        <div
-             style="margin-top:1.5rem;background:linear-gradient(135deg,rgba(255,61,127,0.08),rgba(192,132,252,0.08));border-radius:16px;padding:1.2rem;border:1.5px solid rgba(255,110,180,0.15);">
-          <div style="font-family:'Caveat',cursive;font-size:1rem;color:var(--rose);margin-bottom:0.3rem;">🏆 Challenge
-            ends in</div>
-          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;"
-               id="countdown">3d 14h 22m</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.2rem;">👨‍👩‍👧 Family Leaderboard</h3>
+        <div id="leaderboard" style="display:flex;flex-direction:column;gap:0.7rem;" aria-label="Family leaderboard"></div>
+        <div style="margin-top:1.5rem;background:linear-gradient(135deg,rgba(255,61,127,0.08),rgba(192,132,252,0.08));border-radius:16px;padding:1.2rem;border:1.5px solid rgba(255,110,180,0.15);">
+          <div style="font-family:'Caveat',cursive;font-size:1rem;color:var(--rose);margin-bottom:0.3rem;">🏆 Challenge ends in</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;" id="countdown" aria-live="polite">3d 14h 22m</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WELLNESS -->
-  <section class="wellness-section"
-           id="wellness">
+  <section class="wellness-section" id="wellness" aria-labelledby="wellness-heading">
     <div class="reveal">
       <div class="section-label">🌿 wellness</div>
-      <h2 class="section-title">Glow from the<br>inside out.</h2>
+      <h2 class="section-title" id="wellness-heading">Glow from the<br>inside out.</h2>
       <p class="section-sub">Log water, steps and weight. Watch your wellness bloom with beautiful charts.</p>
     </div>
 
     <div class="wellness-grid">
-      <div class="wellness-card reveal"
-           onclick="logWellness('water')">
-        <div class="wellness-icon">💧</div>
-        <div class="wellness-val"
-             id="waterVal">6</div>
+      <div class="wellness-card reveal" onclick="logWellness('water')" role="button" tabindex="0" aria-label="Log water intake, currently 6 of 8 glasses">
+        <div class="wellness-icon" aria-hidden="true">💧</div>
+        <div class="wellness-val" id="waterVal">6</div>
         <div class="wellness-unit">/ 8 glasses</div>
         <div class="wellness-name">Water Intake</div>
-        <div class="wellness-bar">
-          <div class="wellness-bar-fill w-mint"
-               id="waterBar"
-               style="width:75%"></div>
+        <div class="wellness-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+          <div class="wellness-bar-fill w-mint" id="waterBar" style="width:75%"></div>
         </div>
-        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-family:'Caveat',cursive;">tap to log +1
-          glass</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-family:'Caveat',cursive;">tap to log +1 glass</div>
       </div>
-      <div class="wellness-card reveal"
-           onclick="logWellness('steps')">
-        <div class="wellness-icon">👟</div>
-        <div class="wellness-val"
-             id="stepsVal">7,240</div>
+      <div class="wellness-card reveal" onclick="logWellness('steps')" role="button" tabindex="0" aria-label="Log steps, currently 7240 of 10000 steps">
+        <div class="wellness-icon" aria-hidden="true">👟</div>
+        <div class="wellness-val" id="stepsVal">7,240</div>
         <div class="wellness-unit">/ 10,000 steps</div>
         <div class="wellness-name">Daily Steps</div>
-        <div class="wellness-bar">
-          <div class="wellness-bar-fill w-pink"
-               id="stepsBar"
-               style="width:72%"></div>
+        <div class="wellness-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+          <div class="wellness-bar-fill w-pink" id="stepsBar" style="width:72%"></div>
         </div>
-        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-family:'Caveat',cursive;">tap to log
-          +500 steps</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-family:'Caveat',cursive;">tap to log +500 steps</div>
       </div>
-      <div class="wellness-card reveal"
-           onclick="logWellness('weight')">
-        <div class="wellness-icon">⚖️</div>
-        <div class="wellness-val"
-             id="weightVal">62.4</div>
+      <div class="wellness-card reveal" onclick="logWellness('weight')" role="button" tabindex="0" aria-label="Log body weight, currently 62.4 kg">
+        <div class="wellness-icon" aria-hidden="true">⚖️</div>
+        <div class="wellness-val" id="weightVal">62.4</div>
         <div class="wellness-unit">kg</div>
         <div class="wellness-name">Body Weight</div>
         <div class="wellness-bar">
-          <div class="wellness-bar-fill w-lilac"
-               style="width:60%"></div>
+          <div class="wellness-bar-fill w-lilac" style="width:60%"></div>
         </div>
-        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-family:'Caveat',cursive;">tap to update
-        </div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.6rem;font-family:'Caveat',cursive;">tap to update</div>
       </div>
     </div>
 
-    <!-- Mini bar chart -->
-    <div class="reveal"
-         style="margin-top:2rem;background:#fff;border-radius:24px;padding:1.8rem;border:1.5px solid var(--border);box-shadow:0 4px 24px rgba(255,110,180,0.07);">
-      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;">💧 Weekly
-        Water Intake</div>
-      <div style="display:flex;gap:0.6rem;align-items:flex-end;height:80px;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;flex:1;"
-             id="waterChart"></div>
+    <div class="reveal" style="margin-top:2rem;background:#fff;border-radius:24px;padding:1.8rem;border:1.5px solid var(--border);box-shadow:0 4px 24px rgba(255,110,180,0.07);">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;">💧 Weekly Water Intake</div>
+      <div style="display:flex;gap:0.6rem;align-items:flex-end;height:80px;" role="img" aria-label="Weekly water intake bar chart">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;flex:1;" id="waterChart"></div>
       </div>
     </div>
   </section>
 
   <!-- REWARDS -->
-  <section class="rewards-section"
-           id="rewards">
+  <section class="rewards-section" id="rewards" aria-labelledby="rewards-heading">
     <div class="container">
       <div class="reveal">
         <div class="section-label">🎁 rewards</div>
-        <h2 class="section-title">Treat yourself —<br><em>you earned it.</em></h2>
+        <h2 class="section-title" id="rewards-heading">Treat yourself —<br><em>you earned it.</em></h2>
         <p class="section-sub">Redeem your XP for custom rewards. Build your own treat menu.</p>
       </div>
 
       <div class="rewards-grid">
         <div class="reward-card reveal">
-          <div class="reward-emoji">☕</div>
+          <div class="reward-emoji" aria-hidden="true">☕</div>
           <div class="reward-name">Coffee Date</div>
           <div style="font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;">Your fave latte, guilt-free</div>
           <div class="reward-cost">⚡ 200 XP</div>
-          <button class="redeem-btn"
-                  onclick="redeemReward('Coffee Date', 200)">Redeem ✨</button>
+          <button class="redeem-btn" onclick="redeemReward('Coffee Date', 200)" aria-label="Redeem Coffee Date for 200 XP">Redeem ✨</button>
         </div>
         <div class="reward-card reveal">
-          <div class="reward-emoji">💅</div>
+          <div class="reward-emoji" aria-hidden="true">💅</div>
           <div class="reward-name">Nail Appointment</div>
           <div style="font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;">You deserve cute nails</div>
           <div class="reward-cost">⚡ 500 XP</div>
-          <button class="redeem-btn"
-                  onclick="redeemReward('Nail Appointment', 500)">Redeem ✨</button>
+          <button class="redeem-btn" onclick="redeemReward('Nail Appointment', 500)" aria-label="Redeem Nail Appointment for 500 XP">Redeem ✨</button>
         </div>
         <div class="reward-card reveal">
-          <div class="reward-emoji">🛍️</div>
+          <div class="reward-emoji" aria-hidden="true">🛍️</div>
           <div class="reward-name">Shopping Spree</div>
           <div style="font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;">Mini retail therapy session</div>
           <div class="reward-cost">⚡ 800 XP</div>
-          <button class="redeem-btn"
-                  onclick="redeemReward('Shopping Spree', 800)">Redeem ✨</button>
+          <button class="redeem-btn" onclick="redeemReward('Shopping Spree', 800)" aria-label="Redeem Shopping Spree for 800 XP">Redeem ✨</button>
         </div>
         <div class="reward-card reveal">
-          <div class="reward-emoji">🧖</div>
+          <div class="reward-emoji" aria-hidden="true">🧖</div>
           <div class="reward-name">Spa Day</div>
           <div style="font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;">Ultimate self-care Sunday</div>
           <div class="reward-cost">⚡ 1200 XP</div>
-          <button class="redeem-btn"
-                  onclick="redeemReward('Spa Day', 1200)">Redeem ✨</button>
+          <button class="redeem-btn" onclick="redeemReward('Spa Day', 1200)" aria-label="Redeem Spa Day for 1200 XP">Redeem ✨</button>
         </div>
-        <div class="reward-card reveal"
-             style="border-style:dashed;cursor:pointer;"
-             onclick="addCustomReward()">
-          <div class="reward-emoji">➕</div>
-          <div class="reward-name"
-               style="color:var(--muted);">Custom Reward</div>
+        <div class="reward-card reveal" style="border-style:dashed;cursor:pointer;" onclick="addCustomReward()" role="button" tabindex="0" aria-label="Create a custom reward">
+          <div class="reward-emoji" aria-hidden="true">➕</div>
+          <div class="reward-name" style="color:var(--muted);">Custom Reward</div>
           <div style="font-size:0.78rem;color:var(--muted);margin-bottom:0.6rem;">Add your own treat</div>
-          <div class="reward-cost"
-               style="background:var(--bg);color:var(--muted);">Your XP</div>
-          <button class="redeem-btn"
-                  style="margin-top:0.8rem;">Create 🌸</button>
+          <div class="reward-cost" style="background:var(--bg);color:var(--muted);">Your XP</div>
+          <button class="redeem-btn" style="margin-top:0.8rem;">Create 🌸</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-blob"></div>
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="cta-blob" aria-hidden="true"></div>
     <div class="reveal">
-      <h2>Your <span>main character</span><br>era is calling. ✨</h2>
+      <h2 id="cta-heading">Your <span>main character</span><br>era is calling. ✨</h2>
       <p>Free forever. No subscription. No ads. Just you, your goals, and happiness.</p>
-      <div class="hero-cta"
-           style="justify-content:center;margin-top:0;">
-        <a href="https://nudge-up.github.io/web/"
-         class="btn-main">Try it now ✨</a>
-      <a href="#"
-         class="btn-main"
-         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,10,18,0.35)'"
-         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,10,18,0.25)'">
-        <svg width="20"
-             height="20"
-             viewBox="0 0 24 24"
-             fill="white">
-          <path
-                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-        </svg>
-        <div style="text-align:left;line-height:1.2;">
-          <div style="font-size:0.6rem;opacity:0.7;letter-spacing:0.04em;">Download on the</div>
-          <div style="font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.92rem;">App Store</div>
-        </div>
-      </a>
-      <a href="#"
-         class="btn-main"
-         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,10,18,0.35)'"
-         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,10,18,0.25)'">
-        <svg width="20"
-             height="20"
-             viewBox="0 0 24 24"
-             fill="white">
-          <path
-                d="M3.18 23.76c.38.21.8.24 1.2.09l12.12-6.99-2.53-2.53-10.79 9.43zm-1.8-20.4C1.15 3.79 1 4.24 1 4.75v14.5c0 .51.15.96.38 1.39l.07.07 8.12-8.12v-.2L1.38 3.3zm17.11 7.34l-2.39-1.38-2.82 2.82 2.82 2.82 2.4-1.38c.69-.4.69-1.48-.01-1.88zM4.38.22L16.5 7.21 13.97 9.74 3.18.31C3.58.15 4.0.03 4.38.22z" />
-        </svg>
-        <div style="text-align:left;line-height:1.2;">
-          <div style="font-size:0.6rem;opacity:0.7;letter-spacing:0.04em;">Get it on</div>
-          <div style="font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.92rem;">Google Play</div>
-        </div>
-      </a>
+      <div class="hero-cta" style="justify-content:center;margin-top:0;">
+        <a href="https://nudge-up.github.io/web/" class="btn-main">Try it now ✨</a>
+        <a href="#" class="btn-main" aria-label="Download NudgeUp on the App Store"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,10,18,0.35)'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,10,18,0.25)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+          </svg>
+          <div style="text-align:left;line-height:1.2;">
+            <div style="font-size:0.6rem;opacity:0.7;letter-spacing:0.04em;">Download on the</div>
+            <div style="font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.92rem;">App Store</div>
+          </div>
+        </a>
+        <a href="#" class="btn-main" aria-label="Get NudgeUp on Google Play"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,10,18,0.35)'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,10,18,0.25)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M3.18 23.76c.38.21.8.24 1.2.09l12.12-6.99-2.53-2.53-10.79 9.43zm-1.8-20.4C1.15 3.79 1 4.24 1 4.75v14.5c0 .51.15.96.38 1.39l.07.07 8.12-8.12v-.2L1.38 3.3zm17.11 7.34l-2.39-1.38-2.82 2.82 2.82 2.82 2.4-1.38c.69-.4.69-1.48-.01-1.88zM4.38.22L16.5 7.21 13.97 9.74 3.18.31C3.58.15 4.0.03 4.38.22z" />
+          </svg>
+          <div style="text-align:left;line-height:1.2;">
+            <div style="font-size:0.6rem;opacity:0.7;letter-spacing:0.04em;">Get it on</div>
+            <div style="font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.92rem;">Google Play</div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -474,11 +433,11 @@
   <footer>
     <div class="f-logo">NudgeUp ✨</div>
     <p>© 2026 NudgeUp. Made with 💕 for that girl.</p>
-    <div class="f-links">
+    <nav class="f-links" aria-label="Footer navigation">
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
       <a href="support.html">Support</a>
-    </div>
+    </nav>
   </footer>
 
   <script src="./scripts.js"></script>

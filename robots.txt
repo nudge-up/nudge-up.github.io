@@ -1,0 +1,13 @@
+# robots.txt — NudgeUp
+# https://nudge-up.github.io/
+
+User-agent: *
+Allow: /
+
+# Block private/utility pages
+Disallow: /support.html
+Disallow: /privacy.html
+Disallow: /terms.html
+
+# Sitemap
+Sitemap: https://nudge-up.github.io/sitemap.xml
