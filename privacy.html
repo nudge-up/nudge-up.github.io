@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — NudgeUp ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #ff6eb4; --pink-light: #ffb3d9; --rose: #ff3d7f;
+  --peach: #ffb085; --lilac: #c084fc; --lavender: #e9d5ff;
+  --mint: #6ee7b7; --bg: #fff0f7; --text: #1a0a12;
+  --muted: #8b5a72; --border: rgba(255,110,180,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; }
+
+.blob-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; }
+.blob-1 { width: 500px; height: 500px; background: var(--pink-light); top: -100px; right: -100px; }
+.blob-2 { width: 350px; height: 350px; background: var(--lavender); bottom: 10%; left: -80px; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(255,240,247,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--rose); text-decoration: none; }
+.nav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+.nav-back:hover { color: var(--rose); }
+
+.page-wrap { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+
+.page-header { text-align: center; margin-bottom: 3.5rem; }
+.page-tag { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--rose); margin-bottom: 0.5rem; }
+.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+.page-meta { font-size: 0.82rem; color: var(--muted); }
+.page-meta span { background: #fff; border: 1.5px solid var(--border); border-radius: 100px; padding: 0.3rem 0.9rem; margin: 0 0.3rem; }
+
+.doc-card {
+  background: #fff; border-radius: 24px; padding: 2.5rem;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 40px rgba(255,110,180,0.08);
+  margin-bottom: 1.2rem;
+  position: relative; overflow: hidden;
+}
+.doc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--pink), var(--lilac));
+}
+.doc-card h2 {
+  font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.doc-card h3 { font-size: 1rem; font-weight: 600; margin: 1.2rem 0 0.5rem; color: var(--rose); }
+.doc-card p { font-size: 0.92rem; color: #3a1a2a; line-height: 1.75; margin-bottom: 0.8rem; }
+.doc-card ul { padding-left: 1.3rem; margin-bottom: 0.8rem; }
+.doc-card ul li { font-size: 0.92rem; color: #3a1a2a; line-height: 1.75; margin-bottom: 0.3rem; }
+.doc-card ul li::marker { color: var(--pink); }
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(255,61,127,0.06), rgba(192,132,252,0.06));
+  border: 1.5px solid rgba(255,110,180,0.2);
+  border-radius: 14px; padding: 1.2rem 1.4rem; margin: 1rem 0;
+}
+.highlight-box p { margin: 0; font-weight: 500; }
+
+.badge-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1rem 0; }
+.badge { background: var(--bg); border: 1.5px solid var(--border); border-radius: 100px; padding: 0.35rem 0.9rem; font-size: 0.78rem; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 0.3rem; }
+.badge.green { background: rgba(110,231,183,0.1); border-color: rgba(110,231,183,0.3); color: #065f46; }
+
+.toc { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; padding: 1.8rem; margin-bottom: 2rem; }
+.toc h3 { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--rose); margin-bottom: 1rem; }
+.toc ol { padding-left: 1.3rem; }
+.toc ol li { margin-bottom: 0.4rem; }
+.toc ol li a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.toc ol li a:hover { color: var(--rose); }
+
+footer { position: relative; z-index: 1; background: var(--text); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
+footer .f-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--pink-light); }
+footer p { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+.f-links { display: flex; gap: 1.5rem; }
+.f-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.f-links a:hover { color: var(--pink-light); }
+</style>
+</head>
+<body>
+
+<div class="blob-wrap">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">NudgeUp ✨</a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-tag">🔒 your privacy matters</div>
+    <h1 class="page-title">Privacy Policy</h1>
+    <div class="page-meta">
+      <span>Effective: January 1, 2026</span>
+      <span>Last updated: April 2026</span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <h3>✨ Quick Navigation</h3>
+    <ol>
+      <li><a href="#summary">Privacy at a Glance</a></li>
+      <li><a href="#data-collected">What We Collect</a></li>
+      <li><a href="#data-use">How We Use Your Data</a></li>
+      <li><a href="#local-storage">Local Storage & Offline</a></li>
+      <li><a href="#subscriptions">Subscriptions & Payments</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#rights">Your Rights</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-card" id="summary">
+    <h2>🌸 Privacy at a Glance</h2>
+    <div class="highlight-box">
+      <p>NudgeUp is built privacy-first. Your personal goals, wellness logs, streaks and rewards live on your device by default — we don't want your data, and we're not selling it. Ever.</p>
+    </div>
+    <div class="badge-row">
+      <div class="badge green">✅ No data selling</div>
+      <div class="badge green">✅ No ads</div>
+      <div class="badge green">✅ Offline-first</div>
+      <div class="badge green">✅ Local storage default</div>
+      <div class="badge green">✅ Optional cloud sync only</div>
+    </div>
+  </div>
+
+  <div class="doc-card" id="data-collected">
+    <h2>📋 What We Collect</h2>
+    <h3>Information you provide</h3>
+    <ul>
+      <li>Account details (name, email) if you create an account via Google, Apple, or Phone OTP</li>
+      <li>Goals, nudges, rewards, and wellness logs you create within the app</li>
+      <li>Profile preferences such as theme and notification settings</li>
+      <li>Family group information if you choose to use shared features</li>
+    </ul>
+    <h3>Information collected automatically</h3>
+    <ul>
+      <li>App usage analytics (crash reports, feature usage) — anonymous and aggregated only</li>
+      <li>Device type, OS version, and app version for technical support purposes</li>
+      <li>Push notification tokens to deliver your reminders</li>
+    </ul>
+    <h3>Guest mode</h3>
+    <p>If you use Guest Mode, no account is created and no personal information is transmitted to our servers. All data remains on your device only.</p>
+    <h3>What we do NOT collect</h3>
+    <ul>
+      <li>We do not collect precise location data</li>
+      <li>We do not access your contacts, camera, or microphone without explicit permission</li>
+      <li>We do not build advertising profiles</li>
+      <li>We do not share your data with third-party advertisers</li>
+    </ul>
+  </div>
+
+  <div class="doc-card" id="data-use">
+    <h2>💡 How We Use Your Data</h2>
+    <p>We use collected information solely to:</p>
+    <ul>
+      <li>Deliver and improve the NudgeUp app experience</li>
+      <li>Send reminders and nudge notifications you've configured</li>
+      <li>Sync your data across your own devices (if cloud sync is enabled)</li>
+      <li>Provide customer support when you contact us</li>
+      <li>Process subscription payments securely (future feature)</li>
+      <li>Send optional product updates and new feature announcements (opt-in only)</li>
+    </ul>
+    <div class="highlight-box">
+      <p>We will never use your data to serve you targeted advertisements or sell it to third parties — this applies to both free and paid users.</p>
+    </div>
+  </div>
+
+  <div class="doc-card" id="local-storage">
+    <h2>📱 Local Storage & Offline Design</h2>
+    <p>NudgeUp is engineered to work entirely offline. By default:</p>
+    <ul>
+      <li>All your goals, streaks, XP, wellness logs and rewards are stored locally on your device using secure on-device storage</li>
+      <li>The app functions fully without an internet connection</li>
+      <li>No data leaves your device unless you explicitly enable cloud sync in Settings</li>
+    </ul>
+    <h3>Optional Cloud Sync</h3>
+    <p>If you enable cloud sync, your data is encrypted in transit using TLS 1.3 and stored encrypted at rest on secure servers. You can disable sync and delete your cloud data at any time from Settings → Data & Privacy.</p>
+  </div>
+
+  <div class="doc-card" id="subscriptions">
+    <h2>💳 Subscriptions & Payments</h2>
+    <p>NudgeUp is currently free to use. We plan to introduce an optional paid subscription (NudgeUp Pro) in the future that will unlock premium features. When this launches:</p>
+    <ul>
+      <li>Payments are processed by Apple App Store or Google Play — we never directly handle your card details</li>
+      <li>Subscription management (cancel, upgrade, downgrade) is handled through your device's native store settings</li>
+      <li>We collect only a non-reversible transaction ID and subscription status from the platform — no full payment details</li>
+      <li>Free-tier users retain full access to core features. Paid features will be clearly marked</li>
+      <li>Refunds follow Apple App Store and Google Play refund policies</li>
+    </ul>
+    <div class="highlight-box">
+      <p>Your privacy protections described in this policy apply equally to free and paid subscribers. Paying for NudgeUp Pro does not change how we handle your personal data.</p>
+    </div>
+  </div>
+
+  <div class="doc-card" id="third-parties">
+    <h2>🔗 Third-Party Services</h2>
+    <p>We use a small number of trusted third-party services to operate NudgeUp:</p>
+    <ul>
+      <li><strong>Google Sign-In / Apple Sign-In</strong> — for optional account creation. Their respective privacy policies apply to the authentication step</li>
+      <li><strong>Firebase (Google)</strong> — for push notifications and optional cloud sync. Data is processed under Google's data processing terms</li>
+      <li><strong>Expo / React Native</strong> — the app framework. No personal data is shared with Expo</li>
+      <li><strong>App Store Connect / Google Play Console</strong> — for app distribution and crash reporting</li>
+    </ul>
+    <p>We do not integrate advertising SDKs, social tracking pixels, or data broker services of any kind.</p>
+  </div>
+
+  <div class="doc-card" id="children">
+    <h2>👧 Children's Privacy</h2>
+    <p>NudgeUp is designed for general audiences aged 13 and older. We do not knowingly collect personal information from children under 13. Family group features are designed for household use under parental supervision.</p>
+    <p>If you believe a child under 13 has provided us with personal information, please contact us at <strong>nudgeupdaily@gmail.com</strong> and we will delete it promptly.</p>
+  </div>
+
+  <div class="doc-card" id="rights">
+    <h2>⚖️ Your Rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
+      <li><strong>Correction</strong> — request that we correct inaccurate data</li>
+      <li><strong>Deletion</strong> — request deletion of your account and all associated data (Settings → Data & Privacy → Delete Account)</li>
+      <li><strong>Portability</strong> — export your data in a machine-readable format</li>
+      <li><strong>Opt-out</strong> — unsubscribe from marketing emails at any time via the unsubscribe link or in Settings</li>
+    </ul>
+    <p>For users in the EU/EEA, these rights are provided under GDPR. For California residents, rights are provided under CCPA. We honor these requests globally regardless of your location.</p>
+  </div>
+
+  <div class="doc-card" id="contact">
+    <h2>💌 Contact Us</h2>
+    <p>Questions, concerns, or data requests? We'd love to hear from you:</p>
+    <ul>
+      <li>Email: <strong>nudgeupdaily@gmail.com</strong></li>
+      <li>Support portal: <a href="support.html" style="color:var(--rose);font-weight:600;">nudgeup.app/support</a></li>
+    </ul>
+    <p style="margin-top:1rem;font-size:0.82rem;color:var(--muted);">We aim to respond to all privacy-related requests within 30 days. This policy may be updated periodically — we'll notify you of material changes via in-app notification or email.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">NudgeUp ✨</div>
+  <p>© 2026 NudgeUp. Made with 💕</p>
+  <div class="f-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — NudgeUp ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #ff6eb4; --pink-light: #ffb3d9; --rose: #ff3d7f;
+  --peach: #ffb085; --lilac: #c084fc; --lavender: #e9d5ff;
+  --mint: #6ee7b7; --bg: #fff0f7; --text: #1a0a12;
+  --muted: #8b5a72; --border: rgba(255,110,180,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; }
+
+.blob-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.28; }
+.blob-1 { width: 500px; height: 500px; background: var(--peach); top: -80px; right: -80px; }
+.blob-2 { width: 400px; height: 400px; background: var(--lavender); bottom: 5%; left: -100px; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(255,240,247,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--rose); text-decoration: none; }
+.nav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+.nav-back:hover { color: var(--rose); }
+
+.page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+
+.page-header { text-align: center; margin-bottom: 3.5rem; }
+.page-tag { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--rose); margin-bottom: 0.5rem; }
+.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+.page-sub { color: var(--muted); font-size: 1rem; }
+
+/* Contact cards */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
+.contact-card {
+  background: #fff; border-radius: 22px; padding: 1.8rem; text-align: center;
+  border: 1.5px solid var(--border); box-shadow: 0 6px 28px rgba(255,110,180,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none; color: var(--text);
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+}
+.contact-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(255,110,180,0.16); }
+.contact-icon { font-size: 2.2rem; }
+.contact-label { font-weight: 700; font-size: 0.95rem; }
+.contact-hint { font-size: 0.78rem; color: var(--muted); }
+.contact-card .badge-rt { background: linear-gradient(135deg,var(--rose),var(--pink)); color:#fff; font-size:0.68rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:100px; font-family:'Caveat',cursive; font-size:0.8rem; }
+
+/* FAQ */
+.faq-section { margin-bottom: 3rem; }
+.faq-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+.faq-item {
+  background: #fff; border-radius: 18px;
+  border: 1.5px solid var(--border);
+  margin-bottom: 0.8rem; overflow: hidden;
+  box-shadow: 0 3px 16px rgba(255,110,180,0.06);
+}
+.faq-q {
+  padding: 1.2rem 1.5rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  font-weight: 600; font-size: 0.95rem;
+  user-select: none;
+  transition: background 0.2s;
+  gap: 1rem;
+}
+.faq-q:hover { background: rgba(255,110,180,0.04); }
+.faq-q .arrow {
+  color: var(--pink); font-size: 1rem; flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  font-size: 0.9rem; color: #3a1a2a; line-height: 1.75;
+  border-top: 0px solid var(--border);
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding: 1rem 1.5rem 1.4rem;
+  border-top-width: 1px;
+}
+.faq-a a { color: var(--rose); font-weight: 600; text-decoration: none; }
+.faq-a a:hover { text-decoration: underline; }
+
+/* Contact form */
+.form-section { background: #fff; border-radius: 28px; padding: 2.5rem; border: 1.5px solid var(--border); box-shadow: 0 8px 40px rgba(255,110,180,0.08); position: relative; overflow: hidden; margin-bottom: 2rem; }
+.form-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--peach), var(--rose), var(--lilac)); }
+.form-section h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.form-section p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.8rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.form-label { font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.form-input, .form-select, .form-textarea {
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px;
+  padding: 0.75rem 1rem; font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem; color: var(--text); outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--pink); box-shadow: 0 0 0 3px rgba(255,110,180,0.12);
+}
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b5a72' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--rose), var(--pink));
+  color: #fff; border: none; border-radius: 14px;
+  padding: 0.9rem 2.2rem; font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600; font-size: 0.95rem; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(255,61,127,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,61,127,0.4); }
+
+.success-msg {
+  display: none;
+  background: linear-gradient(135deg, rgba(110,231,183,0.12), rgba(52,211,153,0.08));
+  border: 1.5px solid rgba(110,231,183,0.4);
+  border-radius: 14px; padding: 1.2rem 1.5rem;
+  font-weight: 600; color: #065f46;
+  margin-top: 1rem;
+  text-align: center;
+}
+.success-msg.show { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* Store section */
+.store-section { background: linear-gradient(135deg, rgba(255,61,127,0.06), rgba(192,132,252,0.06)); border-radius: 24px; border: 1.5px solid rgba(255,110,180,0.2); padding: 2rem; text-align: center; margin-bottom: 2rem; }
+.store-section h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.store-section p { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.2rem; }
+.store-btns { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+.store-btn {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  background: #1a0a12; color: #fff; border-radius: 14px;
+  padding: 0.7rem 1.4rem; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 18px rgba(26,10,18,0.2);
+}
+.store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,10,18,0.35); }
+.store-btn-text { text-align: left; line-height: 1.25; }
+.store-btn-text .sub { font-size: 0.6rem; opacity: 0.65; letter-spacing: 0.05em; font-family: 'Instrument Sans',sans-serif; }
+.store-btn-text .main { font-family: 'Instrument Sans',sans-serif; font-weight: 700; font-size: 0.95rem; }
+
+footer { position: relative; z-index: 1; background: var(--text); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
+footer .f-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--pink-light); }
+footer p { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+.f-links { display: flex; gap: 1.5rem; }
+.f-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.f-links a:hover { color: var(--pink-light); }
+
+@media (max-width: 700px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  nav { padding: 1rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="blob-wrap">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">NudgeUp ✨</a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-tag">💕 we've got you</div>
+    <h1 class="page-title">Support Center</h1>
+    <p class="page-sub">Questions? Stuck? We're here to help you get back to crushing your goals 🎯</p>
+  </div>
+
+  <!-- Contact options -->
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:nudgeupdaily@gmail.com">
+      <div class="contact-icon">💌</div>
+      <div class="contact-label">Email Us</div>
+      <div class="contact-hint">nudgeupdaily@gmail.com</div>
+      <div class="badge-rt">Replies in 24–48h</div>
+    </a>
+    <a class="contact-card" href="#contact-form">
+      <div class="contact-icon">📝</div>
+      <div class="contact-label">Submit a Ticket</div>
+      <div class="contact-hint">Use the form below</div>
+      <div class="badge-rt">Fastest response</div>
+    </a>
+    <a class="contact-card" href="mailto:nudgeupdaily@gmail.com">
+      <div class="contact-icon">🔒</div>
+      <div class="contact-label">Privacy Requests</div>
+      <div class="contact-hint">nudgeupdaily@gmail.com</div>
+      <div class="badge-rt">Data & deletion</div>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <div class="faq-title">🌸 Frequently Asked Questions</div>
+
+    <div class="faq-item" id="faq-1">
+      <div class="faq-q" onclick="toggleFaq('faq-1')">
+        Is NudgeUp really free? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        Yes! NudgeUp's core features are completely free — goals, streaks, XP, wellness logging, rewards, and all 12 nudge categories. We plan to introduce an optional <strong>NudgeUp Pro</strong> subscription in the future for premium features, but the free experience will always remain generous. You'll get at least 30 days notice before any changes.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-2">
+      <div class="faq-q" onclick="toggleFaq('faq-2')">
+        Where is my data stored? Is it private? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        By default, all your data (goals, streaks, wellness logs, XP) is stored <strong>locally on your device only</strong>. Nothing is sent to our servers unless you explicitly enable Cloud Sync in Settings. We do not sell your data or show you ads. Read our full <a href="privacy.html">Privacy Policy</a> for details.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-3">
+      <div class="faq-q" onclick="toggleFaq('faq-3')">
+        How do I sync across multiple devices? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        Sign in with a Google, Apple, or Phone OTP account and enable <strong>Cloud Sync</strong> in Settings → Sync & Backup. Your data will sync securely across all devices signed into the same account. Cloud sync is optional — the app works fully offline without it.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-4">
+      <div class="faq-q" onclick="toggleFaq('faq-4')">
+        I lost my streak — can it be restored? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        We know how devastating a broken streak feels! If you believe your streak was lost due to a technical issue (app crash, notification failure, sync error), contact us via the form below with your account email and approximate date. We'll review it and restore your streak if there's a valid reason. We can't restore streaks broken by missed days, but hey — you've got this! 💪
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-5">
+      <div class="faq-q" onclick="toggleFaq('faq-5')">
+        How do I set up Alexa or Google Home integration? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        Go to <strong>Settings → Smart Speakers</strong> in the app. You'll find step-by-step instructions for connecting your Alexa or Google Home device. You'll need to be signed in (not Guest mode) and have the Alexa or Google Home app installed on the same device. Once linked, NudgeUp can announce reminders and nudges through your smart speaker.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-6">
+      <div class="faq-q" onclick="toggleFaq('faq-6')">
+        How do family groups and leaderboards work? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        In <strong>Settings → Family Group</strong>, you can create or join a family group using a shared invite code. Members of the group can see each other's XP on the leaderboard and share rewards. Each person's individual goals and wellness data remain private — only XP totals and streak counts are visible to the group.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-7">
+      <div class="faq-q" onclick="toggleFaq('faq-7')">
+        How do I delete my account and data? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        Go to <strong>Settings → Data & Privacy → Delete Account</strong>. This permanently deletes your account and all associated cloud data. Local device data is also cleared. This action cannot be undone. If you have an active Pro subscription, cancel it first through your App Store or Google Play account settings.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-8">
+      <div class="faq-q" onclick="toggleFaq('faq-8')">
+        What's coming in NudgeUp Pro? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        We're working on <strong>NudgeUp Pro</strong> — our optional paid tier. Planned features include cloud sync & backup, extended family leaderboard, custom themes and app icons, advanced wellness analytics, and priority support. Pricing and launch date TBD. We'll announce it in-app and via email to everyone who's opted in. Free users will always have access to core features.
+      </div>
+    </div>
+
+    <div class="faq-item" id="faq-9">
+      <div class="faq-q" onclick="toggleFaq('faq-9')">
+        The app is not sending notifications — help! <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        Try these steps: <br><br>
+        1. Check that notifications are enabled for NudgeUp in your phone's <strong>Settings → Notifications</strong><br>
+        2. Make sure Do Not Disturb / Focus Mode isn't blocking NudgeUp<br>
+        3. On iOS, go to Settings → NudgeUp → Notifications → Allow Notifications<br>
+        4. On Android, go to Settings → Apps → NudgeUp → Notifications → turn on<br>
+        5. In the NudgeUp app, go to Settings → Notifications and re-save your preferences<br><br>
+        Still not working? Submit a ticket below with your device model and OS version.
+      </div>
+    </div>
+  </div>
+
+  <!-- App store links -->
+  <div class="store-section">
+    <h3>📱 Get the App</h3>
+    <p>Download NudgeUp on your phone for the full experience with push notifications, widgets, and more.</p>
+    <div class="store-btns">
+      <a href="#" class="store-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-btn-text"><div class="sub">Download on the</div><div class="main">App Store</div></div>
+      </a>
+      <a href="#" class="store-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.38.21.8.24 1.2.09l12.12-6.99-2.53-2.53-10.79 9.43zm-1.8-20.4C1.15 3.79 1 4.24 1 4.75v14.5c0 .51.15.96.38 1.39l.07.07 8.12-8.12v-.2L1.38 3.3zm17.11 7.34l-2.39-1.38-2.82 2.82 2.82 2.82 2.4-1.38c.69-.4.69-1.48-.01-1.88zM4.38.22L16.5 7.21 13.97 9.74 3.18.31C3.58.15 4.0.03 4.38.22z"/></svg>
+        <div class="store-btn-text"><div class="sub">Get it on</div><div class="main">Google Play</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="form-section" id="contact-form">
+    <h2>💌 Send Us a Message</h2>
+    <p>Can't find your answer above? Fill in the form and we'll get back to you within 24–48 hours.</p>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Your name</label>
+        <input class="form-input" type="text" placeholder="e.g. Sophia" id="f-name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input class="form-input" type="email" placeholder="you@example.com" id="f-email">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Topic</label>
+      <select class="form-select" id="f-topic">
+        <option value="">Select a topic...</option>
+        <option>🐛 Bug report</option>
+        <option>🔔 Notifications not working</option>
+        <option>🔥 Streak issue</option>
+        <option>💳 Billing / subscription</option>
+        <option>🔒 Privacy / data request</option>
+        <option>💡 Feature request</option>
+        <option>👨‍👩‍👧 Family group help</option>
+        <option>📱 App crashing / performance</option>
+        <option>✨ Something else</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Device & version (optional)</label>
+      <input class="form-input" type="text" placeholder="e.g. iPhone 15, iOS 17 / Samsung Galaxy S24, Android 14" id="f-device">
+    </div>
+
+    <div class="form-group" style="margin-bottom:1.5rem;">
+      <label class="form-label">Your message</label>
+      <textarea class="form-textarea" placeholder="Tell us what's happening... the more detail, the better we can help! 💕" id="f-message"></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitForm()">Send message 💌</button>
+    <div class="success-msg" id="successMsg">
+      🎉 Message sent! We'll get back to you within 24–48 hours. You're the best for reaching out!
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">NudgeUp ✨</div>
+  <p>© 2026 NudgeUp. Made with 💕</p>
+  <div class="f-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+<script>
+function submitForm(){var e,t=document.getElementById("f-name").value.trim(),n=document.getElementById("f-email").value.trim(),m=document.getElementById("f-topic").value,d=document.getElementById("f-device").value.trim(),a=document.getElementById("f-message").value.trim();t&&n&&a?((e=new URLSearchParams).append("entry.1959621988",t),e.append("entry.661513702",n),e.append("entry.1459498205",m),e.append("entry.2019492141",d),e.append("entry.1377522179",a),fetch("https://docs.google.com/forms/d/e/1FAIpQLSc0aNrAvbG-Xdu8u_PgOgXWZSuvKl-jlvLtR7NyVpa5oJJ4uA/formResponse?usp=header",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:e}),document.getElementById("successMsg").classList.add("show"),document.getElementById("f-name").value="",document.getElementById("f-email").value="",document.getElementById("f-topic").value="",document.getElementById("f-device").value="",document.getElementById("f-message").value=""):alert("Please fill in your name, email, and message 💕")}
+</script>
+
+</body>
+</html>

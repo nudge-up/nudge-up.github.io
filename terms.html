@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — NudgeUp ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #ff6eb4; --pink-light: #ffb3d9; --rose: #ff3d7f;
+  --peach: #ffb085; --lilac: #c084fc; --lavender: #e9d5ff;
+  --mint: #6ee7b7; --bg: #fff0f7; --text: #1a0a12;
+  --muted: #8b5a72; --border: rgba(255,110,180,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; }
+
+.blob-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; }
+.blob-1 { width: 500px; height: 500px; background: var(--lavender); top: -100px; left: -100px; }
+.blob-2 { width: 350px; height: 350px; background: var(--pink-light); bottom: 15%; right: -60px; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(255,240,247,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--rose); text-decoration: none; }
+.nav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+.nav-back:hover { color: var(--rose); }
+
+.page-wrap { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+
+.page-header { text-align: center; margin-bottom: 3.5rem; }
+.page-tag { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--rose); margin-bottom: 0.5rem; }
+.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+.page-meta { font-size: 0.82rem; color: var(--muted); }
+.page-meta span { background: #fff; border: 1.5px solid var(--border); border-radius: 100px; padding: 0.3rem 0.9rem; margin: 0 0.3rem; }
+
+.doc-card {
+  background: #fff; border-radius: 24px; padding: 2.5rem;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 40px rgba(255,110,180,0.08);
+  margin-bottom: 1.2rem;
+  position: relative; overflow: hidden;
+}
+.doc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--lilac), var(--pink), var(--rose));
+}
+.doc-card h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.doc-card h3 { font-size: 1rem; font-weight: 600; margin: 1.2rem 0 0.5rem; color: var(--rose); }
+.doc-card p { font-size: 0.92rem; color: #3a1a2a; line-height: 1.75; margin-bottom: 0.8rem; }
+.doc-card ul { padding-left: 1.3rem; margin-bottom: 0.8rem; }
+.doc-card ul li { font-size: 0.92rem; color: #3a1a2a; line-height: 1.75; margin-bottom: 0.3rem; }
+.doc-card ul li::marker { color: var(--pink); }
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(255,61,127,0.06), rgba(192,132,252,0.06));
+  border: 1.5px solid rgba(255,110,180,0.2);
+  border-radius: 14px; padding: 1.2rem 1.4rem; margin: 1rem 0;
+}
+.highlight-box p { margin: 0; font-weight: 500; }
+
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+.plan-card {
+  border-radius: 16px; padding: 1.4rem;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+}
+.plan-card.pro {
+  background: linear-gradient(135deg, rgba(255,61,127,0.06), rgba(192,132,252,0.08));
+  border-color: rgba(255,110,180,0.3);
+}
+.plan-name { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--rose); margin-bottom: 0.5rem; }
+.plan-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 0.8rem; }
+.plan-price span { font-size: 0.75rem; font-family: 'Instrument Sans', sans-serif; font-weight: 400; color: var(--muted); }
+.plan-features { list-style: none; padding: 0; }
+.plan-features li { font-size: 0.82rem; color: #3a1a2a; padding: 0.25rem 0; display: flex; align-items: center; gap: 0.5rem; }
+.plan-features li::before { content: '✓'; color: var(--rose); font-weight: 700; flex-shrink: 0; }
+
+.toc { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; padding: 1.8rem; margin-bottom: 2rem; }
+.toc h3 { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--rose); margin-bottom: 1rem; }
+.toc ol { padding-left: 1.3rem; }
+.toc ol li { margin-bottom: 0.4rem; }
+.toc ol li a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.toc ol li a:hover { color: var(--rose); }
+
+footer { position: relative; z-index: 1; background: var(--text); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
+footer .f-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--pink-light); }
+footer p { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+.f-links { display: flex; gap: 1.5rem; }
+.f-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.f-links a:hover { color: var(--pink-light); }
+
+@media (max-width: 600px) { .plan-grid { grid-template-columns: 1fr; } nav { padding: 1rem 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="blob-wrap">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">NudgeUp ✨</a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-tag">📜 the fine print, made cute</div>
+    <h1 class="page-title">Terms of Service</h1>
+    <div class="page-meta">
+      <span>Effective: January 1, 2025</span>
+      <span>Last updated: April 2025</span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <h3>✨ Quick Navigation</h3>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#description">About NudgeUp</a></li>
+      <li><a href="#accounts">Accounts & Eligibility</a></li>
+      <li><a href="#free-tier">Free Tier</a></li>
+      <li><a href="#subscriptions">NudgeUp Pro (Paid Subscription)</a></li>
+      <li><a href="#your-content">Your Content</a></li>
+      <li><a href="#conduct">Acceptable Use</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#disclaimers">Disclaimers & Limitations</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-card" id="acceptance">
+    <h2>🤝 Acceptance of Terms</h2>
+    <p>By downloading, installing, or using NudgeUp (the "App" or "Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, please do not use NudgeUp.</p>
+    <p>These Terms apply to all users of NudgeUp, including the mobile app (iOS and Android) and the web version at https://nudge-up.github.io/web/.</p>
+  </div>
+
+  <div class="doc-card" id="description">
+    <h2>🌸 About NudgeUp</h2>
+    <p>NudgeUp is a gamified life-reminder and goal-tracking app. It helps you set personal goals, build streaks, track wellness, earn XP rewards, and stay motivated — across iOS, Android, and web.</p>
+    <p>NudgeUp is built privacy-first. Your data is stored locally on your device by default, with optional cloud sync available.</p>
+  </div>
+
+  <div class="doc-card" id="accounts">
+    <h2>👤 Accounts & Eligibility</h2>
+    <h3>Age requirement</h3>
+    <p>You must be at least 13 years old to use NudgeUp. Users under 18 should have parental or guardian consent.</p>
+    <h3>Account creation</h3>
+    <p>You may use NudgeUp as a Guest (no account required) or create an account via Google, Apple Sign-In, or Phone OTP. You are responsible for maintaining the security of your account credentials.</p>
+    <h3>Accuracy</h3>
+    <p>You agree to provide accurate information when creating an account and to keep it up to date.</p>
+  </div>
+
+  <div class="doc-card" id="free-tier">
+    <h2>🆓 Free Tier</h2>
+    <p>NudgeUp's core features are free to use with no time limit. The free tier includes:</p>
+    <ul>
+      <li>Unlimited personal goals and nudges across all 12 categories</li>
+      <li>XP system, streaks, badges, and levels</li>
+      <li>Wellness logging (water, steps, weight)</li>
+      <li>Basic rewards and confetti celebrations</li>
+      <li>5 theme options and notification sounds</li>
+      <li>Guest mode with fully local data</li>
+    </ul>
+    <div class="highlight-box">
+      <p>We reserve the right to adjust what's included in the free tier when NudgeUp Pro launches. Existing free users will receive advance notice of any changes.</p>
+    </div>
+  </div>
+
+  <div class="doc-card" id="subscriptions">
+    <h2>💅 NudgeUp Pro — Paid Subscription</h2>
+    <p>We plan to launch <strong>NudgeUp Pro</strong>, an optional paid subscription tier. Here's what you should know in advance:</p>
+
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0 <span>/ forever</span></div>
+        <ul class="plan-features">
+          <li>All core nudge features</li>
+          <li>XP, streaks & badges</li>
+          <li>Wellness logging</li>
+          <li>5 themes</li>
+          <li>Local storage</li>
+        </ul>
+      </div>
+      <div class="plan-card pro">
+        <div class="plan-name">Pro ✨ (coming soon)</div>
+        <div class="plan-price">TBD <span>/ month or year</span></div>
+        <ul class="plan-features">
+          <li>Everything in Free</li>
+          <li>Cloud sync & backup</li>
+          <li>Family leaderboard (extended)</li>
+          <li>Custom themes & icons</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+          <li>Exclusive Pro badges</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Billing & Renewals</h3>
+    <ul>
+      <li>Subscriptions are billed through Apple App Store or Google Play using your stored payment method</li>
+      <li>Subscriptions auto-renew unless cancelled at least 24 hours before the renewal date</li>
+      <li>You can manage or cancel your subscription at any time in your device's App Store / Play Store account settings</li>
+    </ul>
+
+    <h3>Refunds</h3>
+    <p>Refunds are handled by Apple or Google according to their respective policies. We are unable to process refunds directly. If you have an issue, contact us and we'll do our best to help.</p>
+
+    <h3>Free trial</h3>
+    <p>If a free trial is offered, it will be clearly communicated at the time of sign-up. Unused portions of a trial period are forfeited upon purchase.</p>
+
+    <h3>Price changes</h3>
+    <p>We'll give you at least 30 days notice before changing subscription pricing. You can cancel before a price change takes effect.</p>
+  </div>
+
+  <div class="doc-card" id="your-content">
+    <h2>🗂️ Your Content</h2>
+    <p>The goals, notes, wellness data, and other content you create in NudgeUp ("Your Content") belongs to you. We do not claim ownership of it.</p>
+    <p>By using optional cloud sync, you grant us a limited licence to store and transmit Your Content solely for the purpose of providing the Service to you. We do not use your personal content for any other purpose.</p>
+    <p>You can delete Your Content and your account at any time from Settings → Data & Privacy → Delete Account.</p>
+  </div>
+
+  <div class="doc-card" id="conduct">
+    <h2>🚫 Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the Service for any unlawful purpose</li>
+      <li>Attempt to reverse-engineer, hack, or disrupt the Service</li>
+      <li>Use the Service to transmit spam, malware, or harmful content</li>
+      <li>Misrepresent your identity or impersonate others</li>
+      <li>Circumvent any access controls, subscription gating, or security features</li>
+      <li>Scrape, crawl, or harvest data from the Service</li>
+    </ul>
+    <p>Violations may result in account suspension or termination.</p>
+  </div>
+
+  <div class="doc-card" id="termination">
+    <h2>🔚 Termination</h2>
+    <p>You may stop using NudgeUp and delete your account at any time. We may suspend or terminate your access if you violate these Terms.</p>
+    <p>Upon termination, your right to use the Service ceases. If you had a paid subscription, cancellation takes effect at the end of your current billing period — we do not offer pro-rata refunds for early cancellation unless required by law.</p>
+  </div>
+
+  <div class="doc-card" id="disclaimers">
+    <h2>⚖️ Disclaimers & Limitations</h2>
+    <div class="highlight-box">
+      <p>NudgeUp is a reminder and goal-tracking tool. It is not a medical, financial, or mental health service. Always consult qualified professionals for medical, financial, or mental health decisions.</p>
+    </div>
+    <p>The Service is provided "as is" without warranties of any kind. We do not guarantee uninterrupted availability, and we are not liable for any data loss arising from device failure or app errors — which is why we strongly encourage enabling cloud backup.</p>
+    <p>To the maximum extent permitted by law, NudgeUp's total liability to you for any claim arising from these Terms or the Service shall not exceed the amount you paid us in the 12 months preceding the claim.</p>
+  </div>
+
+  <div class="doc-card" id="changes">
+    <h2>📝 Changes to These Terms</h2>
+    <p>We may update these Terms from time to time. When we make material changes, we'll notify you via in-app notification or email at least 14 days before the changes take effect.</p>
+    <p>Continued use of NudgeUp after changes take effect constitutes acceptance of the updated Terms.</p>
+  </div>
+
+  <div class="doc-card" id="contact">
+    <h2>💌 Contact Us</h2>
+    <p>Questions about these Terms?</p>
+    <ul>
+      <li>Email: <strong>nudgeupdaily@gmail.com</strong></li>
+      <li>Support portal: <a href="support.html" style="color:var(--rose);font-weight:600;">https://nudge-up.github.io/support.html</a></li>
+    </ul>
+    <p style="margin-top:1rem;font-size:0.82rem;color:var(--muted);">These Terms are governed by the laws of your country of residence to the extent applicable. For EU/EEA users, nothing in these Terms affects your statutory consumer rights.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">NudgeUp ✨</div>
+  <p>© 2026 NudgeUp. Made with 💕</p>
+  <div class="f-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
